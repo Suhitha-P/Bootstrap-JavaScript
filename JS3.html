@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS3</title>
+</head>
+<body>
+    <h1>Multiplication and Division Calculator</h1>
+    <form id="calculatorForm">
+        <label for="num1">Enter the first number:</label>
+        <input type="number" id="num1" name="num1" required><br>
+        
+        <label for="num2">Enter the second number:</label>
+        <input type="number" id="num2" name="num2" required><br>
+        
+        <button type="button" onclick="calculateMultiplication()">Multiply</button>
+        <button type="button" onclick="calculateDivision()">Divide</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateMultiplication() {
+            performCalculation('*');
+        }
+
+        function calculateDivision() {
+            performCalculation('/');
+        }
+
+        function performCalculation(operator) {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            if (isNaN(num1) || isNaN(num2)) {
+                alert('Please enter valid numbers.');
+                return;
+            }
+            var result;
+            if (operator === '*') {
+                result = num1 * num2;
+            } else if (operator === '/') {
+                if (num2 === 0) {
+                    alert('Division by zero is not allowed.');
+                    return;
+                }
+                result = num1 / num2;
+            }
+            document.getElementById('result').textContent = "Result: " + result;
+        }
+    </script>
+</body>
+</html>
